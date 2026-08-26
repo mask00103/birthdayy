@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💖✨</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    color:#fff;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 50% 0%,#283b86 0%,#172b5e 34%,#091a3c 70%,#040d22 100%);
+}
+
+.sky{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 8px #fff,0 0 16px #9ddcff;
+    animation:twinkle 2s infinite alternate;
+}
+
+.star.big{width:5px;height:5px}
+
+@keyframes twinkle{
+    from{opacity:.25;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.25)}
+}
+
+.moon{
+    position:fixed;
+    right:8%;
+    top:6%;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#fff,#bceaff);
+    box-shadow:0 0 30px #b7edff,0 0 70px rgba(100,210,255,.45);
+    z-index:1;
+}
+
+.moon:after{
+    content:"";
+    position:absolute;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    background:#071733;
+    left:30px;
+    top:-12px;
+}
+
+.cloud{
+    position:fixed;
+    font-size:48px;
+    opacity:.45;
+    pointer-events:none;
+    z-index:1;
+    animation:cloudMove 18s linear infinite;
+}
+
+.cloud.one{top:20%;left:-100px}
+.cloud.two{top:60%;left:-150px;animation-delay:8s}
+
+@keyframes cloudMove{
+    from{transform:translateX(0)}
+    to{transform:translateX(120vw)}
+}
+
+.shooting{
+    position:fixed;
+    width:130px;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#fff);
+    transform:rotate(-35deg);
+    opacity:0;
+    z-index:1;
+    animation:shoot 7s infinite;
+}
+
+.shooting.one{top:25%;left:5%}
+.shooting.two{top:40%;left:60%;animation-delay:3.5s}
+
+@keyframes shoot{
+    0%,100%{opacity:0}
+    8%{opacity:1}
+    18%{transform:translate(350px,220px) rotate(-35deg);opacity:0}
+}
+
+.screen{
+    display:none;
+    position:relative;
+    z-index:5;
+    min-height:100vh;
+    width:100%;
+    padding:25px 15px;
+    align-items:center;
+    justify-content:center;
+}
+
+.screen.active{display:flex}
+
+.card{
+    width:95%;
+    max-width:760px;
+    max-height:92vh;
+    overflow-y:auto;
+    padding:38px 28px;
+    text-align:center;
+    border-radius:34px;
+    background:linear-gradient(145deg,rgba(48,67,139,.72),rgba(9,24,57,.88));
+    border:1px solid rgba(190,225,255,.35);
+    box-shadow:0 0 45px rgba(100,150,255,.18),inset 0 0 45px rgba(255,255,255,.035);
+    backdrop-filter:blur(14px);
+    animation:appear .6s ease;
+}
+
+.card::-webkit-scrollbar{width:5px}
+.card::-webkit-scrollbar-thumb{background:#b77cff;border-radius:20px}
+
+@keyframes appear{
+    from{opacity:0;transform:translateY(25px) scale(.96)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.bigHeart{
+    font-size:100px;
+    filter:drop-shadow(0 0 22px #ff55a8);
+    animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    30%{transform:scale(1.16)}
+    50%{transform:scale(1)}
+}
+
+h1{
+    font-size:clamp(42px,8vw,72px);
+    color:#fff2ff;
+    margin-bottom:15px;
+    text-shadow:0 0 10px #ff9be6,0 0 28px #d978ff,0 0 55px #7770ff;
+}
+
+h2{
+    font-size:clamp(27px,6vw,45px);
+    color:#ffd9fa;
+    margin-bottom:20px;
+    text-shadow:0 0 16px rgba(255,140,230,.6);
+}
+
+p{
+    font-size:18px;
+    line-height:1.65;
+    margin:12px 0;
+    color:#f1ecff;
+}
+
+.name{
+    color:#ffb9ec;
+    font-weight:bold;
+    text-shadow:0 0 15px #ff55bb;
+}
+
+.btn{
+    border:1px solid rgba(255,220,250,.55);
+    background:linear-gradient(135deg,#e35eae,#7669e8);
+    color:white;
+    padding:14px 28px;
+    border-radius:50px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:10px;
+    box-shadow:0 0 20px rgba(220,100,220,.3);
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 0 30px rgba(255,130,230,.65);
+}
+
+.btn:active{transform:scale(.95)}
+
+.progress{
+    width:90%;
+    height:9px;
+    margin:20px auto;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    overflow:hidden;
+}
+
+.progressBar{
+    width:20%;
+    height:100%;
+    background:linear-gradient(90deg,#ff72c8,#8f7aff);
+    box-shadow:0 0 14px #ff8bd9;
+    transition:.4s;
+}
+
+.question{
+    font-size:25px;
+    font-weight:bold;
+    margin:30px 0;
+    color:#fff;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    max-width:600px;
+    margin:auto;
+}
+
+.option{
+    border:1px solid rgba(255,180,235,.4);
+    background:rgba(56,46,112,.68);
+    color:#fff;
+    padding:18px 12px;
+    border-radius:22px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    background:rgba(125,72,151,.7);
+    border-color:#ff9bdf;
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 0 20px rgba(255,120,220,.25);
+}
+
+.choicePopup{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(2,6,25,.7);
+    backdrop-filter:blur(9px);
+    z-index:999;
+}
+
+.choicePopup.show{display:flex}
+
+.popupBox{
+    width:90%;
+    max-width:450px;
+    padding:32px 25px;
+    text-align:center;
+    border-radius:30px;
+    background:linear-gradient(145deg,#3c2e78,#101c48);
+    border:1px solid #ff9bdd;
+    box-shadow:0 0 35px rgba(255,100,220,.35);
+    animation:popup .4s ease;
+}
+
+@keyframes popup{
+    from{opacity:0;transform:scale(.7)}
+    to{opacity:1;transform:scale(1)}
+}
+
+#choicePhrase{
+    font-size:21px;
+    font-weight:bold;
+    color:#ffd5f4;
+    line-height:1.5;
+    margin:15px 0 20px;
+}
+
+.choiceParticle,.confetti{
+    position:fixed;
+    top:-40px;
+    z-index:1200;
+    pointer-events:none;
+    animation:fall 4s linear forwards;
+}
+
+.choiceParticle{font-size:20px}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* MINI GAME */
+ .game{
+    width:100%;
+    max-width:680px;
+    height:400px;
+    margin:20px auto;
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    border:2px solid rgba(145,220,255,.55);
+
+    /* Night-sky look like your screenshot */
+    background:
+        radial-gradient(circle at 50% 42%, rgba(45,75,145,.18), transparent 42%),
+        linear-gradient(
+            180deg,
+            #071532 0%,
+            #0b1d46 45%,
+            #0a1738 100%
+        );
+
+    box-shadow:
+        inset 0 0 55px rgba(0,0,0,.48),
+        0 0 25px rgba(80,190,255,.12);
+}
+
+/* Soft moon in the upper-right corner */
+.gameMoon{
+    position:absolute;
+    right:42px;
+    top:25px;
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    font-size:0;
+
+    background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,.9) 0 8%, transparent 9%),
+        radial-gradient(circle at 68% 52%, rgba(170,205,225,.45) 0 10%, transparent 11%),
+        radial-gradient(circle at 52% 76%, rgba(170,205,225,.35) 0 11%, transparent 12%),
+        #e9f8ff;
+
+    box-shadow:
+        0 0 18px #d5f4ff,
+        0 0 42px rgba(150,225,255,.48);
+}
+
+/* Tiny stars scattered around the game */
+.gameStar{
+    position:absolute;
+    color:#fff;
+    font-size:18px;
+    line-height:1;
+    text-shadow:
+        0 0 6px #fff,
+        0 0 12px rgba(170,220,255,.9);
+    animation:twinkle 1.5s infinite alternate;
+    z-index:2;
+}
+
+.gameStar.s1{left:9%;top:18%}
+.gameStar.s2{left:35%;top:14%;animation-delay:.5s}
+.gameStar.s3{left:67%;top:22%;animation-delay:.9s}
+.gameStar.s4{left:82%;top:15%;animation-delay:1.2s}
+.gameStar.s5{left:50%;top:30%;animation-delay:.3s}
+
+/* Extra small stars for the same scattered look */
+.gameStar.s6{left:21%;top:43%;font-size:14px;animation-delay:.7s}
+.gameStar.s7{left:55%;top:39%;font-size:13px;animation-delay:1.1s}
+.gameStar.s8{left:75%;top:48%;font-size:15px;animation-delay:.2s}
+.gameStar.s9{left:14%;top:68%;font-size:13px;animation-delay:.9s}
+.gameStar.s10{left:61%;top:68%;font-size:14px;animation-delay:.4s}
+
+/* Shooting star */
+.gameShooting{
+    position:absolute;
+    width:105px;
+    height:2px;
+    left:7%;
+    top:31%;
+    transform:rotate(-34deg);
+    background:linear-gradient(90deg,transparent,#fff);
+    opacity:.65;
+    filter:drop-shadow(0 0 4px #bde8ff);
+    z-index:2;
+}
+
+/* Soft clouds like the reference */
+.gameCloud{
+    position:absolute;
+    left:-120px;
+    top:72px;
+    font-size:48px;
+    opacity:.58;
+    filter:
+        grayscale(.25)
+        drop-shadow(0 0 8px rgba(200,220,255,.18));
+    animation:cloudGame 18s linear infinite;
+    z-index:3;
+}
+
+.gameCloud.cloud2{
+    top:205px;
+    left:82%;
+    font-size:42px;
+    opacity:.42;
+    animation:
+        cloudFloat 7s ease-in-out infinite alternate;
+}
+
+.gameCloud.cloud3{
+    top:135px;
+    left:44%;
+    font-size:35px;
+    opacity:.3;
+    animation:
+        cloudFloat 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes cloudGame{
+    from{left:-120px}
+    to{left:100%}
+}
+
+@keyframes cloudFloat{
+    from{transform:translateY(0)}
+    to{transform:translateY(-8px)}
+}
+
+.panda{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:85px;
+    z-index:5;
+    filter:drop-shadow(0 0 12px rgba(255,180,240,.4));
+}
+
+.mouse{
+    position:absolute;
+    bottom:30px;
+    left:26%;
+    font-size:65px;
+    z-index:5;
+    filter:drop-shadow(0 0 10px rgba(255,180,240,.4));
+}
+
+.heartTarget{
+    position:absolute;
+    font-size:38px;
+    cursor:pointer;
+    z-index:10;
+    filter:drop-shadow(0 0 12px #ff75b9);
+    animation:bounce .8s infinite alternate;
+}
+
+@keyframes bounce{
+    from{transform:translateY(0)}
+    to{transform:translateY(-10px)}
+}
+
+/* CHEESECAKE - PRINCESS CAKE PHOTO */
+.cakeArea{
+    width:100%;
+    height:430px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cheesecake{
+    position:relative;
+    width:min(100%,420px);
+    height:360px;
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cakePhoto{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible;
+    border-radius:30px;
+    filter:drop-shadow(0 15px 28px rgba(255,100,210,.28));
+}
+
+.cakePhoto > img{
+    width:100%;
+    max-width:420px;
+    height:auto;
+    border-radius:25px;
+    display:block;
+    object-fit:contain;
+}
+
+/* Candle is placed over the generated cake image so the candle mini-game still works. */
+.candle{
+    position:absolute;
+    left:50%;
+    top:8px;
+    transform:translateX(-50%);
+    width:20px;
+    height:65px;
+    background:repeating-linear-gradient(45deg,#fff 0 9px,#a88cff 9px 18px);
+    border-radius:6px;
+    z-index:12;
+    box-shadow:0 0 8px rgba(255,255,255,.35);
+}
+
+.flame{
+    position:absolute;
+    left:-8px;
+    top:-42px;
+    font-size:36px;
+    animation:flame .5s infinite alternate;
+}
+
+@keyframes flame{
+    from{transform:scale(1) rotate(-4deg)}
+    to{transform:scale(1.15) rotate(5deg)}
+}
+
+/* A small real-looking piece made from the princess cheesecake image. */
+.cakePiece{
+    display:none;
+    position:absolute;
+    width:115px;
+    height:125px;
+    right:4%;
+    bottom:48px;
+    z-index:20;
+    opacity:0;
+    transform:translate(-25px,25px) scale(.65) rotate(-5deg);
+    filter:drop-shadow(0 8px 12px rgba(0,0,0,.35));
+}
+
+.cakePiece img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.cakePiece.show{
+    display:block;
+    animation:piece 1s ease forwards;
+}
+
+@keyframes piece{
+    0%{opacity:0;transform:translate(-25px,25px) scale(.65) rotate(-5deg)}
+    65%{opacity:1;transform:translate(18px,-8px) scale(1.04) rotate(5deg)}
+    100%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}
+}
+
+@media(max-width:600px){
+    .cakeArea{height:370px}
+    .cheesecake{height:310px}
+    .cakePiece{width:92px;height:105px;right:0;bottom:35px}
+}
+
+/* GIFT */
+.gift{
+    width:180px;
+    height:145px;
+    background:linear-gradient(#e45fae,#7867dc);
+    margin:60px auto 40px;
+    border-radius:12px;
+    position:relative;
+    cursor:pointer;
+    transition:.5s;
+    box-shadow:0 0 30px rgba(255,100,210,.25);
+}
+
+.gift:hover{transform:translateY(-8px)}
+
+.giftLid{
+    position:absolute;
+    width:200px;
+    height:38px;
+    left:-10px;
+    top:-27px;
+    background:linear-gradient(#ff8ed0,#866fe4);
+    border-radius:10px;
+}
+
+.ribbonV{
+    position:absolute;
+    left:72px;
+    width:36px;
+    height:100%;
+    background:#fff0fa;
+}
+
+.ribbonH{
+    position:absolute;
+    top:53px;
+    width:100%;
+    height:32px;
+    background:#fff0fa;
+}
+
+.giftBow{
+    position:absolute;
+    top:-70px;
+    left:58px;
+    font-size:65px;
+}
+
+.giftMessage{display:none;animation:appear .7s ease}
+
+.musicNote{
+    font-size:14px;
+    opacity:.7;
+    margin-top:8px;
+}
+
+/* BIRTHDAY PHOTOS */
+.giftPhotoWrap{
+    width:100%;
+    max-width:420px;
+    margin:20px auto 5px;
+    padding:8px;
+    border-radius:24px;
+    background:linear-gradient(145deg,rgba(255,160,225,.22),rgba(120,110,230,.22));
+    border:1px solid rgba(255,200,240,.35);
+    box-shadow:0 0 25px rgba(255,120,220,.18);
+}
+
+.giftPhotoWrap img{
+    display:block;
+    width:100%;
+    max-height:320px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.photoGallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    max-width:650px;
+    margin:25px auto;
+}
+
+.photoFrame{
+    padding:7px;
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(255,150,220,.24),rgba(120,110,230,.25));
+    border:1px solid rgba(255,220,250,.35);
+    box-shadow:0 0 18px rgba(150,110,255,.18);
+}
+
+.photoFrame img{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+@media(max-width:600px){
+    .photoGallery{grid-template-columns:1fr;}
+
+
+    .options{grid-template-columns:1fr}
+    .card{padding:28px 16px}
+    .game{height:350px}
+    .panda{font-size:68px}
+    .mouse{font-size:52px;left:18%}
+    .moon{width:65px;height:65px}
+    .moon:after{width:65px;height:65px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky"></div>
+<div class="moon"></div>
+<div class="cloud one">☁️</div>
+<div class="cloud two">☁️</div>
+<div class="shooting one"></div>
+<div class="shooting two"></div>
+
+<!-- =========================================================
+     ✏️✏️✏️ EASY EDIT SECTION — CHANGE THINGS HERE ONLY ✏️✏️✏️
+========================================================= -->
+
+<script>
+/* ---------- NAMES ---------- */
+const birthdayName = "Shila";
+const yourName = "Abhi";
+const cutiepieName = "Cutiepie";
+
+/* ---------- MUSIC ---------- */
+/* Put music.mp3 in the SAME folder as this HTML file. */
+const musicFile = "assets/music.m4a";
+const musicStartTime = 10; // 10 = 0:10
+
+/* ---------- PHOTOS ---------- */
+/* Put your photos in assets/photos/ using these names. */
+const giftPhoto = "assets/gift-photo.jpg";
+const galleryPhotos = [
+    "assets/photos/photo1.jpg",
+    "assets/photos/photo2.jpg",
+    "assets/photos/photo3.jpg",
+    "assets/photos/photo4.jpg",
+    "assets/photos/photo5.jpg",
+    "assets/photos/photo6.jpg"
+];
+
+
+/* ---------- MAIN MESSAGES ---------- */
+const welcomeMessage =
+    "A tiny magical night world was made just for you. 💖✨";
+
+const introMessage =
+    "Tonight, the stars are shining a little brighter because it's your special day. 🌙💖";
+
+const finalMessage =
+    "May your upcoming year be filled with beautiful memories, peaceful nights, endless laughter and every happiness your heart deserves. 💖✨";
+
+const giftMessage =
+    "Well.. you are the reason for me to be regular to game play with with also You are the reason to my most smiles this year make u angry happy blush all things made be back smile so stay happy and keep smiling my cutipie Bestu..muah 🎁💙 🎁💖";
+
+/* =========================================================
+   💖 QUESTIONS
+   TO CHANGE A QUESTION:
+   Change the text inside question:
+
+   TO CHANGE AN ANSWER:
+   Change the text inside text:
+
+   TO CHANGE THE MESSAGE AFTER AN ANSWER:
+   Change the text inside phrase:
+
+   You can add/remove questions and answers easily.
+========================================================= */
+
+const questions = [
+
+    {
+        question: "First things first what i like to call u the most , All r the right answer but one is special..🥰",
+
+        answers: [
+            {
+                text:"Kitty 😸",
+                phrase: "Awwww.... my kitty you are but not this one...🥰"
+            },
+            {
+                text: "Cutiepie 💖 ",
+                phrase: "yess my cutie it is it i wanna eat u 😘 muahhh..."
+            },
+            {
+                text: "little girl 👧",
+                phrase: "O umm... yes for me ur little girl pat..pat...💖"
+            },
+            {
+                text: "Bestu💕",
+                phrase: "estu..hmmmm yes you are my bestu no more no less but not the special one..muah.. 💕✨"
+            }
+        ]
+    },
+
+   {
+        question: "What would make your birthday night perfect? 🌙",
+
+        answers: [
+            {
+                text: "🌙 A peaceful night",
+                phrase: "A peaceful night under the stars sounds absolutely beautiful. 🌙💖"
+            },
+            {
+                text: "🎉 A huge celebration",
+                phrase: "Haha! I knew you wanted a big celebration! 🎉💖"
+            },
+            {
+                text: "🍰 Unlimited cheesecake",
+                phrase: "Of course you chose cheesecake! 😂🍰"
+            },
+            {
+                text: "💕 Lots of love",
+                phrase: "Awww... and you deserve every bit of that love sspecially all my love for u..muahh..... 💕✨"
+            }
+        ]
+    },
+
+    {
+        question: "Choose your birthday superpower! ✨",
+
+        answers: [
+            {
+                text: "💖 Make everyone happy",
+                phrase: "That's such a sweet choice. You'd make the whole world brighter. 💖🌟"
+            },
+            {
+                text: "🪄 Make wishes happen",
+                phrase: "Then I hope your biggest wish comes true. 🪄💖"
+            },
+            {
+                text: "⭐ Never feel sad",
+                phrase: "If u ever feel sad and dont telll me remeber i will punish you.. ⭐💙"
+            },
+            {
+                text: "🍰 Summon cheesecake",
+                phrase: "The cheesecake obsession continues! 😂🍰"
+            }
+        ]
+    },
+
+    {
+        question: "What describes you best tonight? 🌙",
+
+        answers: [
+            {
+                text: "🥰 Cute",
+                phrase: "Cute was definitely one of the correct answers. 🥰💖"
+            },
+            {
+                text: "😎 Cool",
+                phrase: "Okayyy, cool birthday girl energy activated. 😎✨"
+            },
+            {
+                text: "🤭 Mischievous",
+                phrase: "I had a feeling you'd choose this one. 🤭💖"
+            },
+            {
+                text: "👑 Birthday Queen",
+                phrase: "YES. Tonight you officially have the crown. 👑💖✨"
+            }
+        ]
+    },
+
+    {
+        question: "What do you deserve today? 💖",
+
+        answers: [
+            {
+                text: "💖 All the love",
+                phrase: "Absolutely. You deserve more love than you can imagine. 💖🌌"
+            },
+            {
+                text: "🎁 All the gifts",
+                phrase: "Haha! Someone knows it's their birthday! 🎁😂💖"
+            },
+            {
+                text: "🍰 All the cheesecake",
+                phrase: "You really love cheesecake, don't you? 😂🍰"
+            },
+            {
+                text: "✨ EVERYTHING GOOD",
+                phrase: "YES! You deserve everything beautiful. ✨💖🌌"
+            }
+        ]
+    }
+
+];
+</script>
+
+<!-- SCREEN 1 -->
+<section class="screen active" id="screen1">
+<div class="card">
+
+    <div class="bigHeart">💖✨</div>
+
+    <h1>Happy Birthday</h1>
+
+    <h2>
+        <span class="birthdayName name"></span> 🌙
+    </h2>
+
+    <p id="welcomeText"></p>
+
+    <p>
+        I made a tiny magical universe just for you... 🥺💖
+    </p>
+
+    <button class="btn" onclick="startSurprise()">
+        Open Your Surprise ✨
+    </button>
+
+
+</div>
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen" id="screen2">
+<div class="card">
+
+    <div style="font-size:75px">🌙💫💖</div>
+
+    <h2>
+        Dear <span class="birthdayName name"></span> 💖
+    </h2>
+
+    <p id="introText"></p>
+
+    <p>
+        For tonight, forget everything else and just enjoy your little birthday universe. 🌌
+    </p>
+
+    <p>
+        There are not many but few suprises waiting for You. ✨
+    </p>
+
+    <button class="btn" onclick="nextScreen(3)">
+        Begin The Adventure 💫
+    </button>
+
+</div>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen" id="screen3">
+<div class="card">
+
+    <h2>🌌 Little Birthday Quiz</h2>
+
+    <div class="progress">
+        <div class="progressBar" id="progressBar"></div>
+    </div>
+
+    <div class="question" id="question"></div>
+
+    <div class="options" id="options"></div>
+
+</div>
+</section>
+
+<!-- ANSWER POPUP -->
+<div class="choicePopup" id="choicePopup">
+<div class="popupBox">
+
+    <div style="font-size:38px">💖 ✨ 🌙 🎀</div>
+
+    <p id="choicePhrase"></p>
+
+    <button class="btn" onclick="continueQuestion()">
+        Continue →
+    </button>
+
+</div>
+</div>
+
+<!-- SCREEN 4 -->
+<section class="screen" id="screen4">
+<div class="card">
+
+    <div style="font-size:85px">🐼🌙💖</div>
+
+    <h2>Cutiepie Lovely Adventure</h2>
+
+    <p>
+        Your tiny chibi panda is waiting for you. 🐼💖
+    </p>
+
+    <p>
+        Catch <b>5 little hearts</b> to unlock your cheesecake! 💖
+    </p>
+
+    <button class="btn" onclick="startGame()">
+        Start Adventure 🎮
+    </button>
+
+</div>
+</section>
+
+<!-- SCREEN 5 -->
+<section class="screen" id="screen5">
+<div class="card">
+
+    <h2>💖 Cutiepie Lovely Adventure</h2>
+
+    <div style="font-size:19px;font-weight:bold;margin:12px;color:#ffd6f4">
+        Hearts:
+        <span id="score">0</span>/5
+        &nbsp;&nbsp;
+        Time:
+        <span id="timer">20</span>
+    </div>
+
+    <div class="game" id="game">
+
+        <div class="gameMoon">🌙</div>
+
+        <div class="gameStar s1">⭐</div>
+        <div class="gameStar s2">✨</div>
+        <div class="gameStar s3">⭐</div>
+        <div class="gameStar s4">✨</div>
+        <div class="gameStar s5">⭐</div>
+        <div class="gameStar s6">✦</div>
+        <div class="gameStar s7">✧</div>
+        <div class="gameStar s8">✦</div>
+        <div class="gameStar s9">✧</div>
+        <div class="gameStar s10">✦</div>
+
+        <div class="gameShooting"></div>
+
+        <div class="gameCloud">☁️</div>
+        <div class="gameCloud cloud2">☁️</div>
+        <div class="gameCloud cloud3">☁️</div>
+
+        <div class="mouse">🐭🎀</div>
+        <div class="panda">🐼</div>
+
+    </div>
+
+    <p id="gameMessage">Catch the little hearts! 💖</p>
+
+</div>
+</section>
+
+<!-- SCREEN 6 -->
+<section class="screen" id="screen6">
+<div class="card">
+
+    <div style="font-size:80px">🍰🐼🐭</div>
+
+    <h2>You Did It! ✨</h2>
+
+    <p>The little panda and mouse are proud of you! 🐼🐭💖</p>
+
+    <p>
+        Now it's finally time for your special cheesecake.
+    </p>
+
+    <p>
+        Make a beautiful wish under the stars... 🌟
+    </p>
+
+    <button class="btn" onclick="nextScreen(7)">
+        Bring My Cheesecake 🍰
+    </button>
+
+</div>
+</section>
+
+<!-- SCREEN 7 -->
+<section class="screen" id="screen7">
+<div class="card">
+
+    <h2>🍰 Your Birthday Cheesecake</h2>
+
+    <p id="cakeText">First, blow the candle! 💨</p>
+
+    <div class="cakeArea">
+
+        <div class="cheesecake">
+
+            <div class="cakePhoto">
+                <img src="assets/princess-cheesecake.png" alt="Princess cheesecake for Shila">
+
+                <div class="candle">
+                    <div class="flame" id="flame">🔥</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cakePiece" id="cakePiece">
+            <img src="assets/princess-cheesecake-slice.png" alt="A small slice of the princess cheesecake">
+        </div>
+
+    </div>
+
+    <div style="font-size:60px;margin-top:-25px">
+        🐼💖🐭🎀
+    </div>
+
+    <button class="btn" id="blowButton" onclick="blowCandle()">
+        Blow Candle 💨
+    </button>
+
+    <button class="btn" id="cutButton" onclick="cutCake()" style="display:none">
+        Cut The Cheesecake 🔪🍰
+    </button>
+
+    <button class="btn" id="eatButton" onclick="eatCake()" style="display:none">
+        Eat One Piece 😋🍰
+    </button>
+
+</div>
+</section>
+
+<!-- SCREEN 8 -->
+<section class="screen" id="screen8">
+<div class="card">
+
+    <h2>🎁 One Last Gift</h2>
+
+    <p>There is one little gift waiting beneath the stars...</p>
+    <p>Click it. 👀💖</p>
+
+    <div class="gift" id="gift" onclick="openGift()">
+        <div class="giftLid"></div>
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+        <div class="giftBow">🎀</div>
+    </div>
+
+    <div class="giftPhotoWrap">
+        <img id="giftPhoto" src="assets/gift-photo.jpg" alt="A special birthday memory">
+    </div>
+
+    <div class="giftMessage" id="giftMessage">
+
+        <h2>💝 A Little Gift For You</h2>
+
+        <p id="giftText"></p>
+
+        <p>And remember...</p>
+
+        <p style="font-size:27px">
+            You are genuinely special. 💖
+        </p>
+
+        <button class="btn" onclick="nextScreen(9)">
+            One Last Thing 🌌
+        </button>
+
+    </div>
+
+</div>
+</section>
+
+<!-- SCREEN 9 - PHOTO MEMORIES -->
+<section class="screen" id="screen9">
+<div class="card">
+
+    <h2>📸 More Little Memories 💖</h2>
+
+    <p>Some extra photos just for you. 🌙✨</p>
+
+    <div class="photoGallery" id="photoGallery"></div>
+
+    <button class="btn" onclick="nextScreen(10)">
+        One Last Thing 🌌
+    </button>
+
+</div>
+</section>
+
+<!-- SCREEN 10 -->
+<section class="screen" id="screen10">
+<div class="card">
+
+    <div class="bigHeart">💖</div>
+
+    <h1>Happy Birthday!</h1>
+
+    <h2>
+        <span class="birthdayName name"></span> ✨
+    </h2>
+
+    <p>Thank you for being you. 💖</p>
+
+    <p id="finalText"></p>
+
+    <p>
+        I hope whenever you look at the stars,
+        you remember how special you are. 🌌
+    </p>
+
+    <div style="font-size:42px">
+        🌙 ⭐ 💖 ✨ 🎀 🐼 🐭
+    </div>
+
+    <p style="font-size:24px">
+        <strong>You deserve a beautiful universe of your own. 💖</strong>
+    </p>
+
+    <p>
+        Made with love by
+        <span class="name" id="yourName"></span>
+        ❤️
+    </p>
+
+    <button class="btn" onclick="celebrate()">
+        Celebrate Again 🎉
+    </button>
+
+</div>
+</section>
+
+<audio id="birthdayMusic" preload="auto">
+    <source id="musicSource" src="" type="audio/mpeg">
+</audio>
+
+<script>
+/* =========================================================
+   DO NOT NEED TO EDIT BELOW THIS LINE
+========================================================= */
+
+const sky = document.getElementById("sky");
+
+for(let i=0;i<110;i++){
+    const star=document.createElement("div");
+    star.className="star";
+    if(Math.random()>.82) star.classList.add("big");
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.animationDelay=Math.random()*3+"s";
+    sky.appendChild(star);
+}
+
+document.querySelectorAll(".birthdayName").forEach(el=>{
+    el.textContent=birthdayName;
+});
+
+document.getElementById("yourName").textContent=yourName;
+document.getElementById("welcomeText").textContent=welcomeMessage;
+document.getElementById("introText").textContent=introMessage;
+document.getElementById("finalText").textContent=finalMessage;
+document.getElementById("giftText").textContent=giftMessage;
+document.getElementById("giftPhoto").src=giftPhoto;
+
+const music=document.getElementById("birthdayMusic");
+music.src = musicFile;
+music.load();
+
+/* MUSIC
+   The browser may block true autoplay with sound.
+   We try to start it immediately, and the first click
+   (including Open Your Surprise) will start it reliably.
+*/
+function startMusic(){
+    music.currentTime = musicStartTime;
+    const playPromise = music.play();
+
+    if(playPromise !== undefined){
+        playPromise.catch(()=>{
+            console.log("Autoplay was blocked. Music will start after the first click.");
+        });
+    }
+}
+
+function startSurprise(){
+    nextScreen(2);
+}
+
+/* Try autoplay as soon as the website opens. */
+window.addEventListener("load", function(){
+    startMusic();
+});
+
+/* Fallback: if Chrome blocks autoplay, the first user interaction starts it. */
+document.addEventListener("pointerdown", function(){
+    if(music.paused){
+        startMusic();
+    }
+}, {once:true});
+
+function nextScreen(number){
+    document.querySelectorAll(".screen").forEach(screen=>{
+        screen.classList.remove("active");
+    });
+
+    const target=document.getElementById("screen"+number);
+    if(target) target.classList.add("active");
+
+    window.scrollTo(0,0);
+}
+
+/* QUESTIONS */
+let questionNumber=0;
+
+function showQuestion(){
+
+    const current=questions[questionNumber];
+
+    document.getElementById("question").textContent=current.question;
+
+    const options=document.getElementById("options");
+    options.innerHTML="";
+
+    current.answers.forEach(answer=>{
+
+        const button=document.createElement("button");
+        button.className="option";
+        button.textContent=answer.text;
+
+        button.onclick=function(){
+
+            document.getElementById("choicePhrase").textContent=answer.phrase;
+
+            createChoiceShower();
+
+            document.getElementById("choicePopup").classList.add("show");
+        };
+
+        options.appendChild(button);
+    });
+
+    document.getElementById("progressBar").style.width=
+        ((questionNumber+1)/questions.length*100)+"%";
+}
+
+function continueQuestion(){
+
+    document.getElementById("choicePopup").classList.remove("show");
+
+    questionNumber++;
+
+    if(questionNumber>=questions.length){
+
+        questionNumber=0;
+
+        setTimeout(()=>nextScreen(4),250);
+
+    }else{
+
+        showQuestion();
+    }
+}
+
+showQuestion();
+
+/* PARTICLES */
+function createChoiceShower(){
+
+    const symbols=["💖","💗","💕","✨","⭐","🌟","💫"];
+
+    for(let i=0;i<30;i++){
+
+        setTimeout(()=>{
+
+            const particle=document.createElement("div");
+
+            particle.className="choiceParticle";
+            particle.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+            particle.style.left=Math.random()*100+"vw";
+            particle.style.fontSize=(14+Math.random()*20)+"px";
+            particle.style.animationDuration=(2.5+Math.random()*2)+"s";
+
+            document.body.appendChild(particle);
+
+            setTimeout(()=>particle.remove(),5000);
+
+        },i*45);
+    }
+}
+
+/* MINI GAME */
+let score=0;
+let time=20;
+let gameTimer=null;
+let heartTimer=null;
+
+function startGame(){
+
+    nextScreen(5);
+
+    score=0;
+    time=20;
+
+    document.getElementById("score").textContent=score;
+    document.getElementById("timer").textContent=time;
+    document.getElementById("gameMessage").textContent="Catch the little hearts! 💖";
+
+    document.querySelectorAll(".heartTarget").forEach(el=>el.remove());
+
+    clearInterval(gameTimer);
+    clearInterval(heartTimer);
+
+    heartTimer=setInterval(createHeart,850);
+
+    gameTimer=setInterval(()=>{
+
+        time--;
+
+        document.getElementById("timer").textContent=time;
+
+        if(time<=0){
+
+            clearInterval(gameTimer);
+            clearInterval(heartTimer);
+
+            if(score>=5){
+
+                finishGame();
+
+            }else{
+
+                document.getElementById("gameMessage").textContent=
+                    "Almost! Try again! 🥺💖";
+
+                setTimeout(startGame,1200);
+            }
+        }
+
+    },1000);
+}
+
+function createHeart(){
+
+    if(score>=5)return;
+
+    const game=document.getElementById("game");
+    const heart=document.createElement("div");
+
+    heart.className="heartTarget";
+    heart.textContent="💖";
+
+    heart.style.left=(8+Math.random()*82)+"%";
+    heart.style.top=(80+Math.random()*210)+"px";
+
+    heart.onclick=function(){
+
+        score++;
+
+        document.getElementById("score").textContent=score;
+
+        heart.remove();
+
+        createHearts();
+
+        if(score>=5){
+
+            clearInterval(gameTimer);
+            clearInterval(heartTimer);
+
+            finishGame();
+        }
+    };
+
+    game.appendChild(heart);
+
+    setTimeout(()=>{
+        if(heart.parentNode)heart.remove();
+    },3000);
+}
+
+function finishGame(){
+
+    document.getElementById("gameMessage").textContent=
+        "🎉 You caught all the hearts! 🐼💖🐭";
+
+    createConfetti();
+
+    setTimeout(()=>nextScreen(6),2000);
+}
+
+/* CHEESECAKE */
+function blowCandle(){
+
+    document.getElementById("flame").style.display="none";
+
+    document.getElementById("cakeText").textContent=
+        "Wish made under the stars! ✨ Now cut your cheesecake! 🍰";
+
+    document.getElementById("blowButton").style.display="none";
+    document.getElementById("cutButton").style.display="inline-block";
+
+    createHearts();
+}
+
+function cutCake(){
+
+    const cakePiece=document.getElementById("cakePiece");
+    cakePiece.style.display="block";
+    cakePiece.classList.remove("show");
+    void cakePiece.offsetWidth;
+    cakePiece.classList.add("show");
+
+    document.getElementById("cutButton").style.display="none";
+
+    document.getElementById("cakeText").textContent=
+        "Yay! Your cheesecake piece is ready! 🍰💖";
+
+    document.getElementById("eatButton").style.display="inline-block";
+
+    createConfetti();
+}
+
+function eatCake(){
+
+    document.getElementById("cakePiece").style.display="none";
+    document.getElementById("cakePiece").classList.remove("show");
+
+    document.getElementById("cakeText").textContent=
+        "Nom nom nom! 😋🍰 Delicious!";
+
+    document.getElementById("eatButton").style.display="none";
+
+    setTimeout(()=>nextScreen(8),1600);
+}
+
+/* GIFT */
+function openGift(){
+
+    const gift=document.getElementById("gift");
+
+    gift.style.transform="scale(0) rotate(20deg)";
+
+    setTimeout(()=>{
+
+        gift.style.display="none";
+
+        document.getElementById("giftMessage").style.display="block";
+
+        createConfetti();
+
+    },500);
+}
+
+/* PHOTO GALLERY */
+function loadBirthdayPhotos(){
+    const gallery=document.getElementById("photoGallery");
+    if(!gallery)return;
+
+    gallery.innerHTML="";
+
+    galleryPhotos.forEach((photo,index)=>{
+        const frame=document.createElement("div");
+        frame.className="photoFrame";
+
+        const img=document.createElement("img");
+        img.src=photo;
+        img.alt="Birthday memory "+(index+1);
+        img.loading="lazy";
+
+        frame.appendChild(img);
+        gallery.appendChild(frame);
+    });
+}
+
+loadBirthdayPhotos();
+
+/* EFFECTS */
+function createHearts(){
+
+    const symbols=["💖","💗","💕","✨","⭐"];
+
+    for(let i=0;i<10;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="confetti";
+        heart.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        heart.style.left=Math.random()*100+"vw";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),4000);
+    }
+}
+
+function createConfetti(){
+
+    const symbols=["💖","⭐","✨","💫","🌟","🎀","🎉","💎"];
+
+    for(let i=0;i<30;i++){
+
+        setTimeout(()=>{
+
+            const piece=document.createElement("div");
+
+            piece.className="confetti";
+            piece.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+            piece.style.left=Math.random()*100+"vw";
+            piece.style.fontSize=(18+Math.random()*14)+"px";
+            piece.style.animationDuration=(2+Math.random()*3)+"s";
+
+            document.body.appendChild(piece);
+
+            setTimeout(()=>piece.remove(),5000);
+
+        },i*30);
+    }
+}
+
+function celebrate(){
+
+    nextScreen(1);
+    createConfetti();
+
+    /* Reset cake controls if they play again */
+    document.getElementById("flame").style.display="block";
+    document.getElementById("blowButton").style.display="inline-block";
+    document.getElementById("cutButton").style.display="none";
+    document.getElementById("eatButton").style.display="none";
+    const cakePiece=document.getElementById("cakePiece");
+    cakePiece.style.display="none";
+    cakePiece.classList.remove("show");
+    document.getElementById("cakeText").textContent="First, blow the candle! 💨";
+}
+</script>
+
+</body>
+</html>
